@@ -324,12 +324,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const modalBg = document.getElementById('modal-bg');
     let modalEl = null;
+    let closeTimeout = null;
 
     function openModal(projectKey) {
         const project = projectsInfo[projectKey];
         if (!project) return;
 
-        if (modalEl) modalEl.remove();
+        // Prevent freezing: Destroy all existing modals immediately if rapidly clicking
+        document.querySelectorAll('.project-modal').forEach(el => el.remove());
+        clearTimeout(closeTimeout);
+        modalEl = null;
 
         modalBg.classList.add('open');
         document.body.style.overflow = "hidden"; // Prevent background scrolling
@@ -363,17 +367,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModal() {
-        if (modalEl) {
-            modalBg.classList.remove('open');
-            document.body.style.overflow = "";
-            window.history.pushState(null, null, ' '); // Clear hash
-            setTimeout(() => {
-                if (modalEl) {
-                    modalEl.remove();
-                    modalEl = null;
-                }
-            }, 400); 
-        }
+        modalBg.classList.remove('open');
+        document.body.style.overflow = "";
+        window.history.pushState(null, null, ' '); // Clear hash
+        
+        // Wait for fade out animation, then safely clear the DOM
+        closeTimeout = setTimeout(() => {
+            document.querySelectorAll('.project-modal').forEach(el => el.remove());
+            modalEl = null;
+        }, 400); 
     }
 
     modalBg.onclick = (e) => { if (e.target === modalBg) closeModal(); };
@@ -436,8 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Page Visibility check to pause animations and save battery
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            // Cancel animation is tricky without an ID, but setting a flag works too.
-            // For now, the browser's native requestAnimationFrame throttling handles this well.
+            // Browser handles requestAnimationFrame pausing automatically
         }
     });
 });
