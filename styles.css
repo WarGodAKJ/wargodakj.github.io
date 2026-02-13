@@ -819,6 +819,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   .hamburger-wrap { display: block; position: relative; }
   .menu-icon { display: flex; align-items: center; justify-content: center; }
   
+  /* HIDE ROBOTIC ARM AND GYRO BUTTON ON MOBILE */
+  #robotic-arm-bg, #gyro-button {
+    display: none !important;
+  }
+  
   .mobile-nav {
     position: absolute;
     top: 100%; right: 0;
