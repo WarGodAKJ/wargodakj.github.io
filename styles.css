@@ -672,6 +672,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   justify-content: center;
 }
 
+/* Default Modal Image Style (Desktop) */
 .modal-right img {
   width: 100%;
   height: auto;          /* Let the height adjust naturally */
@@ -862,7 +863,31 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   .highlight-link { color: var(--accent-cyan); border-top: 1px solid var(--border-tech); padding-top: 1rem; }
 
   .exp-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .project-modal { grid-template-columns: 1fr; padding: 1.5rem; }
+  
+  /* === KEY FIX: MODAL IMAGES FOR TABLET/MOBILE === */
+  /* Force a simple vertical flex layout to avoid grid stretching issues */
+  .project-modal { 
+    display: flex; 
+    flex-direction: column; 
+    padding: 1.5rem; 
+    max-height: 90vh;
+  }
+  
+  /* Reset container properties */
+  .modal-right {
+    width: 100%;
+    margin-top: 1rem;
+    display: block; /* Removes flex interference */
+  }
+
+  /* Force image to contain properly within the viewport height */
+  .modal-right img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 50vh !important; /* Cap height to 50% of viewport */
+    object-fit: contain !important; /* Prevent cropping at all costs */
+    background: rgba(0,0,0,0.5); /* Make letterboxing look intentional */
+  }
 }
 
 @media (max-width: 480px) {
