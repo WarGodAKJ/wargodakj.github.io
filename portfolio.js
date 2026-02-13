@@ -86,8 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Only run Arm logic on PC (width > 1024px)
-    if (window.innerWidth > 1024) {
+    // --- SMART DEVICE DETECTION ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isLargeScreen = window.innerWidth > 1366;
+
+    // Only run Arm logic on PC (Large screen AND NOT a touch device)
+    if (isLargeScreen && !isTouchDevice) {
         
         const canvas = document.getElementById('robotic-arm-bg');
         const ctx = canvas.getContext('2d');
@@ -148,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         function animateArm() {
             ctx.clearRect(0, 0, width, height);
 
-            // --- IK SOLVER FIRST ---
             reach(segments[numSegments - 1], target.x, target.y);
             for(let i = numSegments - 2; i >= 0; i--) {
                 reach(segments[i], segments[i+1].x, segments[i+1].y);
@@ -159,18 +162,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 position(segments[i], segments[i+1]);
             }
 
-            // Calculate EXACT Tip Position
             const lastSeg = segments[numSegments - 1];
             const actualTipX = lastSeg.x + Math.cos(lastSeg.angle) * lastSeg.length;
             const actualTipY = lastSeg.y + Math.sin(lastSeg.angle) * lastSeg.length;
             
-            // --- STATE LOGIC ---
-            // Enter idle if no movement for 2.5s AND mouse is not held down
             if (!isMouseDown && Date.now() - idleTimer > 2500) {
                 isIdle = true;
             }
 
-            // 1. IDLE MODE
             if (isIdle) {
                 if (idleState === 'MOVING') {
                     target.x += (idleTarget.x - target.x) * 0.012;
@@ -189,14 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         pickNewIdleTarget();
                     }
                 }
-            } 
-            // 2. ACTIVE MOUSE CONTROL
-            else {
+            } else {
                 target.x += (mouse.x - target.x) * 0.08;
                 target.y += (mouse.y - target.y) * 0.08;
             }
 
-            // --- DRAW ARM ---
             ctx.fillStyle = '#111';
             ctx.fillRect(armBase.x - 30, armBase.y - 15, 60, 30);
             ctx.beginPath();
@@ -242,10 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.save();
                     ctx.translate(nextX, nextY);
                     ctx.rotate(seg.angle);
-                    
                     ctx.fillStyle = '#2c3e50';
                     ctx.fillRect(0, -8, 12, 16);
-                    
                     ctx.beginPath();
                     ctx.moveTo(12, -4);
                     ctx.lineTo(24, -1);
@@ -255,11 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.fill();
                     ctx.restore();
 
-                    // Determine if we should spark/glow
                     const isWorking = (isIdle && idleState === 'WELDING') || isMouseDown;
 
                     if (isWorking) {
-                        // Arc Glow
                         ctx.beginPath();
                         ctx.arc(nextX, nextY, 6 + Math.random()*6, 0, Math.PI * 2);
                         ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
@@ -268,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.fill();
                         ctx.shadowBlur = 0;
 
-                        // Emit Sparks
                         if (Math.random() > 0.4) { 
                             for (let i = 0; i < 2; i++) {
                                 const angle = Math.PI/2 + (Math.random() - 0.5) * 2.0; 
@@ -285,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                     
-                    // Crosshairs (only show when dragging mouse, hide during idle)
                     if (!isIdle) {
                         ctx.beginPath();
                         ctx.moveTo(target.x - 10, target.y);
@@ -299,12 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // --- DRAW SPARKS ---
             for (let i = sparks.length - 1; i >= 0; i--) {
                 let s = sparks[i];
                 let px = s.x;
                 let py = s.y;
-
                 s.x += s.vx;
                 s.y += s.vy;
                 s.vy += 0.3; 
@@ -331,14 +319,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     s.vy *= -0.3;
                     s.vx *= 0.7;
                 }
-
                 if(s.life <= 0) sparks.splice(i, 1);
             }
-
             requestAnimationFrame(animateArm);
         }
 
-        // Initialize and listen for events
         initCanvas();
         animateArm();
         
@@ -350,7 +335,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('mousemove', (e) => {
             const dist = Math.hypot(e.clientX - lastMouse.x, e.clientY - lastMouse.y);
-            
             if (dist > 5) { 
                 idleTimer = Date.now();
                 isIdle = false;
@@ -359,12 +343,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     pickNewIdleTarget();
                 }
             }
-            
             mouse.x = e.clientX;
             mouse.y = e.clientY;
             lastMouse.x = e.clientX;
             lastMouse.y = e.clientY;
-            
             if(cursorXEl && cursorYEl) {
                 cursorXEl.textContent = String(e.clientX).padStart(4, '0');
                 cursorYEl.textContent = String(e.clientY).padStart(4, '0');
@@ -389,7 +371,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        5. UI INTERACTIONS & MODALS
        ========================================= */
-    
     const projectsInfo = {
         proj1: {
             title: "Tone Control/Karaoke Mixer Circuit",
@@ -466,24 +447,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(projectKey) {
         const project = projectsInfo[projectKey];
         if (!project) return;
-
         document.querySelectorAll('.project-modal').forEach(el => el.remove());
         clearTimeout(closeTimeout);
         modalEl = null;
-
         modalBg.classList.add('open');
         document.body.style.overflow = "hidden"; 
-        
         window.history.pushState(null, null, `#${projectKey}`);
-
         modalEl = document.createElement("div");
         modalEl.className = "project-modal";
-
         let imageBlock = `<img src="${project.img}" alt="${project.title}">`;
-        if (project.img2) {
-            imageBlock += `<img src="${project.img2}" alt="${project.title} additional view">`;
-        }
-
+        if (project.img2) imageBlock += `<img src="${project.img2}" alt="${project.title} additional view">`;
         modalEl.innerHTML = `
             <button class="modal-close" title="Close"><i class="fa-solid fa-xmark"></i></button>
             <h3><span class="bracket">[</span> ${project.title} <span class="bracket">]</span></h3>
@@ -496,7 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${imageBlock}
             </div>
         `;
-
         modalBg.appendChild(modalEl);
         modalEl.querySelector('.modal-close').onclick = closeModal;
     }
@@ -505,7 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBg.classList.remove('open');
         document.body.style.overflow = "";
         window.history.pushState(null, null, ' '); 
-        
         closeTimeout = setTimeout(() => {
             document.querySelectorAll('.project-modal').forEach(el => el.remove());
             modalEl = null;
@@ -513,16 +484,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalBg.onclick = (e) => { if (e.target === modalBg) closeModal(); };
-
     document.querySelectorAll('.project-card').forEach(card => {
         card.onclick = () => openModal(card.getAttribute('data-project'));
     });
-
     if (window.location.hash) {
         const hash = window.location.hash.substring(1);
         if (projectsInfo[hash]) openModal(hash);
     }
-
     document.querySelectorAll('.exp-header').forEach(header => {
         header.onclick = function() {
             const parent = header.parentElement;
@@ -543,7 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (hamburger) hamburger.addEventListener('click', toggleNav);
-
     document.querySelectorAll('.mobile-link').forEach(link => {
         link.addEventListener('click', () => {
             if (mobileNav.classList.contains('open')) toggleNav();
@@ -559,6 +526,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.1 });
-
     fadeElems.forEach(elem => observer.observe(elem));
 });

@@ -803,7 +803,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .separator { color: var(--accent-cyan); }
 
 /* Hide Gyro Button on Desktop */
-@media (min-width: 1025px) {
+@media (min-width: 1367px) {
   #gyro-button {
     display: none;
   }
@@ -825,11 +825,12 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 /* =========================================
    RESPONSIVE DESIGN (TABLET & MOBILE)
    ========================================= */
-/* Change breakpoint from 768px to 1024px to catch Tablets */
-@media (max-width: 1024px) {
-  .hud-layer { display: none; } /* Hide HUD */
+/* We now use (pointer: coarse) to detect touch devices 
+   OR screen width up to 1366px to catch Tablet Landscape 
+*/
+@media (max-width: 1366px), (pointer: coarse) {
+  .hud-layer { display: none; } 
   
-  /* Layout adjustments */
   .split-hero { flex-direction: column; text-align: center; gap: 2rem; padding-top: 2rem; }
   .split-left { flex: auto; max-width: 350px; margin: 0 auto; }
   .about-header-lines { border-left: none; padding-left: 0; border-top: 2px solid var(--border-tech); padding-top: 1rem; margin: 0 auto 2rem; }
@@ -839,12 +840,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   /* Navigation: Switch to Hamburger */
   .ribbon-nav { display: none; }
   .resume-btn { display: none; }
- 
   
   .hamburger-wrap { display: block; position: relative; }
   .menu-icon { display: flex; align-items: center; justify-content: center; }
   
-  /* HIDE ROBOTIC ARM AND GYRO BUTTON ON MOBILE/TABLET */
+  /* HIDE ROBOTIC ARM AND GYRO BUTTON ON TABLET/MOBILE */
   #robotic-arm-bg, #gyro-button {
     display: none !important;
   }
@@ -877,7 +877,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
   .timeline-dot { left: 3px; width: 14px; height: 14px; }
   .timeline-item { padding-left: 40px; }
   
-  /* Project Modal Adjustments for Mobile */
   .project-modal {
     grid-template-columns: 1fr;
     padding: 1.5rem;
