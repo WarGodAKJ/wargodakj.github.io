@@ -512,6 +512,22 @@ a {
   transition: transform 450ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
+.project-media.is-contain,
+.library-card-media.is-contain {
+  background: #e2e5e3;
+}
+
+.project-media.is-contain img,
+.library-card-media.is-contain img {
+  object-fit: contain;
+  padding: 18px;
+}
+
+.project-media.is-contain:hover img,
+.library-card-media.is-contain:hover img {
+  transform: none;
+}
+
 .project-media:hover img {
   transform: scale(1.025);
 }

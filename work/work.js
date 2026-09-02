@@ -62,7 +62,7 @@ const renderProjects = () => {
       const cover = pathFromWork(project.cover);
       return `
         <article class="library-card">
-          <a class="library-card-media" href="${href}"${externalAttributes(href)} aria-label="${project.linkLabel}: ${project.title}">
+          <a class="library-card-media${project.mediaContain ? " is-contain" : ""}" href="${href}"${externalAttributes(href)} aria-label="${project.linkLabel}: ${project.title}">
             <img src="${cover}" alt="${project.coverAlt}" loading="lazy">
           </a>
           <div class="library-card-copy">

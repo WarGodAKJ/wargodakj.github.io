@@ -42,6 +42,7 @@ export const projects = [
     tools: ["Fusion 360", "FDM prototyping", "Mechanism design", "Concept selection"],
     cover: "assets/project3-img.jpg",
     coverAlt: "Wheelchair-mounted service-dog kibble dispenser prototype",
+    mediaContain: true,
     featuredRank: 3,
     href: "work/kibble-dispenser/",
     linkLabel: "View case study",

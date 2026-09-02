@@ -74,14 +74,26 @@
       <section class="case-section">
         <div class="shell">
           <div class="case-section-heading"><p class="eyebrow">02 · Statistical tolerancing</p><h2>Quantifying three interference and clearance risks.</h2><p>The analysis compared statistical and worst-case interpretations, then checked the numerical setup through hand calculations before the results were used in DFM/NPI discussions.</p></div>
-          <div class="result-grid" aria-label="Tolerance analysis results">
-            <article class="result-card"><span>Case 1</span><strong>306 PPM</strong><small>Interference between case bumps and overmold.</small></article>
-            <article class="result-card"><span>Case 2</span><strong>22 PPM</strong><small>Interference between organizer bump and overmold.</small></article>
-            <article class="result-card"><span>Case 3</span><strong>4,678 PPM</strong><small>Potential clearance between organizer and overmold at the lower end.</small></article>
+          <div class="tolerance-case-grid" aria-label="Interference and clearance cases">
+            <article class="tolerance-case tolerance-case-wide">
+              <div class="tolerance-case-heading"><div><span>Case 1 · Interference</span><h3>Case bumps and overmold</h3></div><strong>306 <small>PPM</small></strong></div>
+              <div class="tolerance-image-pair">
+                <img src="../../assets/te-tolerance-case-1-overview.png" alt="Case 1 assembly section showing the case bump and overmold dimensions" loading="lazy">
+                <img src="../../assets/te-tolerance-case-1-section.png" alt="Case 1 connector section showing the supporting dimension in the tolerance stack" loading="lazy">
+              </div>
+            </article>
+            <article class="tolerance-case">
+              <div class="tolerance-case-heading"><div><span>Case 2 · Interference</span><h3>Organizer bump and overmold</h3></div><strong>22 <small>PPM</small></strong></div>
+              <img src="../../assets/te-tolerance-case-2.png" alt="Case 2 organizer and overmold dimensions used in the interference analysis" loading="lazy">
+            </article>
+            <article class="tolerance-case">
+              <div class="tolerance-case-heading"><div><span>Case 3 · Clearance</span><h3>Organizer and overmold</h3></div><strong>4,678 <small>PPM</small></strong></div>
+              <img src="../../assets/te-tolerance-case-3.png" alt="Case 3 organizer and overmold dimensions used in the clearance analysis" loading="lazy">
+            </article>
           </div>
           <div class="case-two-column is-spaced">
-            <figure class="case-figure"><img src="../../assets/te-tolerance-case-1.png" alt="Statistical tolerance results table for Case 1 showing 306 PPM" loading="lazy"><figcaption>Raw Case 1 output. The 306 PPM result is retained because it is consistent with the resume and source table.</figcaption></figure>
-            <div class="case-prose"><h3>Engineering interpretation</h3><p>The three cases did not carry the same risk. Case 1 and Case 2 produced low statistical failure estimates, while Case 3 exposed a higher probability of losing the intended relationship at the lower end of the distribution.</p><p>The case-study metrics use the raw PPM outputs from the analysis tables so each result remains traceable to the underlying calculation.</p><div class="evidence-callout"><strong>Independent verification</strong><span>Hand calculations were used to check the statistical stack-up rather than accepting the workbook output without review.</span></div></div>
+            <div class="case-prose"><h3>Interpretation</h3><p>Case 1 and Case 2 produced low statistical failure estimates. Case 3 showed a higher probability of clearance between the organizer and overmold at the lower end of the distribution.</p></div>
+            <div class="case-prose"><div class="evidence-callout"><strong>Independent verification</strong><span>I checked the statistical stack-up with hand calculations before using the results in DFM/NPI discussions.</span></div></div>
           </div>
         </div>
       </section>

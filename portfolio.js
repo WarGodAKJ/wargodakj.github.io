@@ -18,7 +18,7 @@ if (featuredContainer) {
     .map(
       (project) => `
         <article class="featured-project" id="${project.id}">
-          <a class="project-media" href="${project.href}"${externalLinkAttributes(project.href)} aria-label="${project.linkLabel}: ${project.title}">
+          <a class="project-media${project.mediaContain ? " is-contain" : ""}" href="${project.href}"${externalLinkAttributes(project.href)} aria-label="${project.linkLabel}: ${project.title}">
             <img src="${project.cover}" alt="${project.coverAlt}" loading="lazy">
             <span class="project-number" aria-hidden="true">0${project.featuredRank}</span>
             <span class="project-status">${project.maturity}</span>
