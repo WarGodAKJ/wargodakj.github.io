@@ -27,7 +27,7 @@ if (featuredContainer) {
             <p class="project-eyebrow">${project.eyebrow}</p>
             <h3>${project.title}</h3>
             <p>${project.summary}</p>
-            <p class="project-outcome"><strong>Evidence:</strong> ${project.outcome}</p>
+            <p class="project-outcome"><strong>Result:</strong> ${project.outcome}</p>
             ${tagList(project.tools)}
             <a class="text-link" href="${project.href}"${externalLinkAttributes(project.href)}>${project.linkLabel} <span aria-hidden="true">↗</span></a>
           </div>

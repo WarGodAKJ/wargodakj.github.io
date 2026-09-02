@@ -4,15 +4,15 @@ export const projects = [
     title: "Product development at TE Connectivity",
     eyebrow: "Professional · Mechanical design",
     projectType: "Professional",
-    summary: "Advanced high-speed connector hardware through Creo design, GD&T, statistical tolerancing, release workflows, fixture validation, and manufacturing requirements.",
-    outcome: "Moved an OSFP 224G test module from concept through preliminary release, completing the documentation needed to unblock manufacturing.",
+    summary: "Designed high-speed connector hardware in Creo and supported the work with GD&T, statistical tolerance analysis, fixture validation, and manufacturing documentation.",
+    outcome: "Completed the preliminary release package for an OSFP 224G test module so manufacturing could begin assembly.",
     domains: ["Product Development", "Testing & Reliability", "Manufacturing & DFM"],
     tools: ["Creo", "GD&T", "Statistical tolerancing", "DFM / NPI"],
     cover: "assets/te-osfp-test-module.png",
     coverAlt: "Creo rendering of an OSFP 224G test-module assembly",
     featuredRank: 1,
     href: "work/te-connectivity/",
-    linkLabel: "Read the case study",
+    linkLabel: "View case study",
     maturity: "Preliminary release"
   },
   {
@@ -20,7 +20,7 @@ export const projects = [
     title: "SpotMicro quadruped robot",
     eyebrow: "Research · Robotics & mechatronics",
     projectType: "Research / Personal",
-    summary: "Integrated twelve calibrated servos, a Teensy 4.0, PCA9685 driver, and MPU6050 sensing into a staged pitch-stabilization test program.",
+    summary: "Integrated twelve calibrated servos, a Teensy 4.0, a PCA9685 driver, and MPU6050 sensing for pitch-stabilization testing.",
     outcome: "Recorded hardware-tested pitch correction and documented the architecture, calibration procedure, safety checks, and known control limitations.",
     domains: ["Robotics & Mechatronics", "Analysis & Simulation"],
     tools: ["Teensy", "C++ / Arduino", "MPU6050", "PCA9685"],
@@ -28,7 +28,7 @@ export const projects = [
     coverAlt: "SpotMicro quadruped robot hardware on a workbench",
     featuredRank: 2,
     href: "work/spotmicro/",
-    linkLabel: "Read the case study",
+    linkLabel: "View case study",
     maturity: "Active development"
   },
   {
@@ -36,15 +36,15 @@ export const projects = [
     title: "Wheelchair-mounted kibble dispenser",
     eyebrow: "Academic · Human-centered design",
     projectType: "Academic",
-    summary: "Developed a low-dexterity mechanical feeder through requirements definition, concept screening, and three physical prototype iterations.",
+    summary: "Developed a mechanical feeder for low-dexterity users through requirements definition, concept screening, and three prototype iterations.",
     outcome: "The beta prototype consistently dispensed a single kibble and satisfied the requirements documented in the public project summary.",
     domains: ["Product Development", "Manufacturing & DFM"],
     tools: ["Fusion 360", "FDM prototyping", "Mechanism design", "Concept selection"],
     cover: "assets/project3-img.jpg",
     coverAlt: "Wheelchair-mounted service-dog kibble dispenser prototype",
     featuredRank: 3,
-    href: "assets/project3-proposal.pdf",
-    linkLabel: "Read the project summary",
+    href: "work/kibble-dispenser/",
+    linkLabel: "View case study",
     maturity: "Validated prototype"
   },
   {
@@ -60,7 +60,7 @@ export const projects = [
     coverAlt: "Axisymmetric temperature contour from the Hencken burner thermal model",
     featuredRank: 4,
     href: "work/hencken-burner/",
-    linkLabel: "Read the case study",
+    linkLabel: "View case study",
     maturity: "Analysis complete"
   },
   {
@@ -74,8 +74,8 @@ export const projects = [
     cover: "assets/Fixture PIC 2.png",
     coverAlt: "Mechanical fixture used for printed-circuit-board vibration testing",
     supporting: true,
-    href: "#experience",
-    linkLabel: "View experience"
+    href: "work/amphenol/",
+    linkLabel: "View project"
   },
   {
     id: "haptic-headset",
@@ -88,8 +88,8 @@ export const projects = [
     cover: "assets/project2-img.jpg",
     coverAlt: "Prototype haptic navigation headset with ultrasonic sensors",
     supporting: true,
-    href: "https://github.com/UnbrokenMango21/AssistiveTechHeadset",
-    linkLabel: "View team repository"
+    href: "work/haptic-headset/",
+    linkLabel: "View project"
   },
   {
     id: "steadycam",
@@ -102,8 +102,8 @@ export const projects = [
     cover: "assets/steadycam-response.png",
     coverAlt: "Response plot comparing the baseline and reduced-stiffness SteadyCam models",
     supporting: true,
-    href: "https://github.com/WarGodAKJ/steadycam-dynamic-system-modeling",
-    linkLabel: "Review the model"
+    href: "work/steadycam/",
+    linkLabel: "View analysis"
   },
   {
     id: "structural-vibration",
@@ -115,8 +115,8 @@ export const projects = [
     tools: ["MATLAB", "Modal analysis", "Euler–Lagrange", "Parameter sweep"],
     cover: "assets/ptmd-damped-response.png",
     coverAlt: "Damped structural response plot from the passive tuned mass damper analysis",
-    href: "https://github.com/WarGodAKJ/mechanical-vibrations-modal-analysis",
-    linkLabel: "Review the analysis"
+    href: "work/structural-vibration/",
+    linkLabel: "View analysis"
   },
   {
     id: "braccio-kinematics",
@@ -129,7 +129,7 @@ export const projects = [
     cover: "assets/braccio-coordinate-frames.jpg",
     coverAlt: "Tinkerkit Braccio robot arm annotated with assigned coordinate frames",
     href: "https://github.com/WarGodAKJ/Tinkerkit-Braccio-Kinematics",
-    linkLabel: "Inspect the MATLAB code"
+    linkLabel: "View MATLAB code"
   },
   {
     id: "pipelined-cpu",
@@ -142,7 +142,7 @@ export const projects = [
     cover: "assets/cpu-pipeline-architecture.png",
     coverAlt: "Block diagram of the five-stage pipelined CPU architecture",
     href: "https://github.com/WarGodAKJ/32bit-pipelined-cpu-verilog",
-    linkLabel: "Inspect the RTL and reports"
+    linkLabel: "View RTL and reports"
   },
   {
     id: "tone-control",
