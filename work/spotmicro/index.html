@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpotMicro Quadruped Robot | Atharva Joshi</title>
+    <meta name="description" content="A documented quadruped robotics project integrating twelve servos, Teensy control, MPU6050 sensing, calibration, testing, and pitch stabilization.">
+    <meta name="theme-color" content="#0b1c24">
+    <link rel="canonical" href="https://wargodakj.github.io/work/spotmicro/">
+    <meta property="og:type" content="article"><meta property="og:title" content="SpotMicro Quadruped Robot | Atharva Joshi"><meta property="og:description" content="Electromechanical integration, staged hardware testing, and pitch stabilization on a twelve-servo quadruped."><meta property="og:image" content="https://wargodakj.github.io/assets/project5_2-img.jpeg"><meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css"><link rel="stylesheet" href="../case-study.css"><script defer src="../case-study.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#case-content">Skip to case study</a>
+    <header class="site-header is-scrolled"><div class="shell header-inner"><a class="brand" href="../../index.html" aria-label="Atharva Joshi, home"><span class="brand-mark" aria-hidden="true">AJ</span><span class="brand-copy"><strong>Atharva Joshi</strong><span>Mechanical engineer</span></span></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-button><span class="menu-button-label">Menu</span><span class="menu-button-lines" aria-hidden="true"><i></i><i></i></span></button><nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-navigation><a href="../">Work</a><a href="../../index.html#experience">Experience</a><a href="../../index.html#about">About</a><a class="nav-resume" href="../../assets/Atharva_Joshi_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a></nav></div></header>
+
+    <main id="case-content">
+      <section class="case-hero"><div class="shell"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span><a href="../">Work</a><span>/</span><span>SpotMicro</span></nav><div class="case-hero-grid"><div><p class="eyebrow">Research case study · Robotics &amp; mechatronics</p><h1>Closing the loop on a twelve-servo quadruped.</h1><p class="case-lede">A Teensy-based hardware project progressing from electrical bring-up and servo calibration to IMU sensing, staged testing, and hardware-tested pitch correction.</p><div class="hero-actions"><a class="button button-primary" href="https://github.com/WarGodAKJ/SpotMicro/blob/main/Auto%20Balancing%20Video.mp4" target="_blank" rel="noopener">Watch balancing test <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/WarGodAKJ/SpotMicro" target="_blank" rel="noopener">Inspect repository <span aria-hidden="true">↗</span></a></div></div><figure class="case-cover"><img src="../../assets/project5_2-img.jpeg" alt="SpotMicro quadruped robot hardware on a workbench"><figcaption>SpotMicro hardware during integration and control development</figcaption></figure></div></div></section>
+
+      <section class="case-summary" aria-label="Project summary"><dl class="shell case-summary-grid"><div><dt>Controller</dt><dd>Teensy 4.0</dd></div><div><dt>Actuation</dt><dd>12 servos via PCA9685</dd></div><div><dt>Sensing</dt><dd>MPU6050 on Wire1</dd></div><div><dt>Status</dt><dd>V1 tested · V2 experimental</dd></div></dl></section>
+
+      <section class="case-section is-white"><div class="shell case-two-column"><div class="case-section-heading"><p class="eyebrow">01 · System integration</p><h2>Hardware configuration had to become explicit before control work was safe.</h2></div><div class="case-prose"><h3>Electrical and mechanical foundation</h3><p>The robot uses eight 20 kg servos for hip and thigh joints, four 35 kg servos for the knees, a PCA9685 servo driver, an MPU6050 IMU, and separate regulated logic and servo power rails from a 3S LiPo.</p><p>A short circuit and failed servo driver during development made staged validation essential. The repository now documents power-off inspection, controller-only checks, one-channel-at-a-time calibration, sensor validation, motion demonstrations, and stabilization tests.</p><div class="evidence-callout"><strong>Configuration drift removed</strong><span>The project robot uses contiguous channels 0–11, while the upstream Nova SM3 reference uses a different map. The two code paths are now explicitly separated.</span></div></div></div></section>
+
+      <section class="case-section"><div class="shell"><div class="case-section-heading"><p class="eyebrow">02 · Control architecture</p><h2>From measured pitch to mirrored stance correction.</h2><p>The active experimental scope is deliberately narrow: read pitch, compute a bounded correction, respect calibration offsets, and command the twelve leg servos safely.</p></div><pre class="system-flow" aria-label="SpotMicro pitch-control flow">MPU6050 acceleration
+        │
+        ▼
+pitch calculation ──► optional low-pass filter ──► pitch controller
+                                                        │
+                                                        ▼
+                                     mirrored front/rear correction
+                                                        │
+                                                        ▼
+                                  calibration offset + angle constraint
+                                                        │
+                                                        ▼
+                                            PCA9685 ──► 12 servos</pre><div class="result-grid"><article class="result-card"><span>Calibration</span><strong>12</strong><small>Per-channel offsets recorded for the physical robot.</small></article><article class="result-card"><span>Baseline</span><strong>50</strong><small>Pitch samples averaged by the experimental v2 auto-zero routine.</small></article><article class="result-card"><span>Correction limit</span><strong>±30°</strong><small>Bound applied by the documented v2 controller.</small></article></div></div></section>
+
+      <section class="case-section is-dark"><div class="shell"><div class="case-section-heading"><p class="eyebrow">03 · Iteration</p><h2>Separate what worked from what changed next.</h2><p>The repository distinguishes recorded hardware behavior from later code changes that have not yet been validated on the robot.</p></div><div class="module-grid"><article class="module-card"><p class="project-eyebrow">Pitch stabilization v1</p><h3>Hardware-tested response</h3><p>Produced a successful recorded pitch response. Known issues included delayed recovery after lowering the board, free hip joints, resting bias, and vibration-driven twitching.</p><span class="status-note">Tested on hardware</span></article><article class="module-card"><p class="project-eyebrow">Pitch stabilization v2</p><h3>Targeted controller revision</h3><p>Adds a startup baseline, exponential filtering, active hip hold, proportional-only correction, and integral-windup removal. It remains intentionally labeled experimental.</p><span class="status-note">Not yet hardware-tested</span></article></div></div></section>
+
+      <section class="case-section is-white"><div class="shell case-two-column"><div class="case-section-heading"><p class="eyebrow">04 · Validation</p><h2>Real motion evidence, with the remaining limits stated.</h2></div><div class="case-prose"><p>The new repository video is the strongest current proof that the robot responded to changes in pitch. It is linked rather than auto-loaded so a 17.4 MB file does not slow every portfolio visit.</p><p>The next useful evidence is quantitative: board angle, raw and filtered pitch, commanded correction, recovery time, and oscillation. Those measurements would turn the visual demonstration into a defensible controller-performance result.</p><div class="hero-actions"><a class="button button-ink" href="https://github.com/WarGodAKJ/SpotMicro/blob/main/Auto%20Balancing%20Video.mp4" target="_blank" rel="noopener">Open auto-balancing video <span aria-hidden="true">↗</span></a><a class="button button-ink" href="https://github.com/WarGodAKJ/SpotMicro/blob/main/docs/testing.md" target="_blank" rel="noopener">Read the test procedure <span aria-hidden="true">↗</span></a></div></div></div></section>
+
+      <section class="case-next"><div class="shell case-next-inner"><h2>Next: modeling temperature inside a Hencken burner.</h2><a class="button button-light" href="../hencken-burner/">View thermal analysis <span aria-hidden="true">→</span></a></div></section>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><p>© <span data-current-year></span> Atharva Joshi</p><p>Mechanical engineering · Product development · Mechatronics</p><a href="../">All work ↑</a></div></footer>
+  </body>
+</html>
