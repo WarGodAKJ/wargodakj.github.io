@@ -5,15 +5,15 @@
 .spot-hardware { margin: 0; border: 1px solid #3b535c; }
 .spot-photo { padding: 24px; background: #fff; }
 .spot-photo img { width: 100%; height: auto; }
-.spot-hardware figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px; color: #afc4ca; font: 500 9px/1.5 var(--mono); }
+.spot-hardware figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 14px; color: #afc4ca; font: 500 12px/1.5 var(--mono); }
 .spot-specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 56px 0 0; padding: 28px 0; border-top: 1px solid var(--line-light); }
-.spot-specs dt { color: #9db3bb; font: 500 9px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+.spot-specs dt { color: #9db3bb; font: 500 12px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .spot-specs dd { margin: 8px 0 0; color: white; font-size: 13px; }
 .spot-chapters { background: var(--paper); border-bottom: 1px solid var(--line); }
 .spot-chapters > div { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-block: 20px; }
-.spot-chapters a { font: 500 10px/1.5 var(--mono); color: var(--ink-soft); text-decoration: none; }
+.spot-chapters a { font: 500 12px/1.5 var(--mono); color: var(--ink-soft); text-decoration: none; }
 .spot-chapters a:hover { color: var(--orange-dark); text-decoration: underline; text-underline-offset: 5px; }
-.spot-label { display: block; color: var(--orange-dark); font: 500 10px/1.5 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.spot-label { display: block; color: var(--orange-dark); font: 500 12px/1.5 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .is-dark .spot-label, .mixer-panel .spot-label { color: #efaa87; }
 .spot-intro { margin-top: 0 !important; font-size: 19px; color: var(--ink) !important; }
 .spotmicro-page .case-two-column .case-section-heading { margin-bottom: 0; }
@@ -47,7 +47,7 @@
 .spot-light-link { color: white; }
 .spot-test-grid > article { padding: 30px; border: 1px solid var(--line); }
 .spot-test-grid .spot-test-limit { background: #f8f0e9; border-color: #dfc5b4; }
-.test-indicator { color: var(--steel-dark); font: 600 10px/1.5 var(--mono); text-transform: uppercase; }
+.test-indicator { color: var(--steel-dark); font: 600 12px/1.5 var(--mono); text-transform: uppercase; }
 .spot-test-limit .test-indicator { color: var(--orange-dark); }
 .spot-test-grid ul { padding-left: 20px; color: var(--ink-soft); font-size: 14px; line-height: 1.9; }
 .spot-tilt-note { border-left: 3px solid var(--steel); padding: 6px 0 6px 20px; margin-top: 32px; }
@@ -63,7 +63,7 @@
   .spot-integration-grid, .spot-test-grid, .spot-video-section { grid-template-columns: 1fr; gap: 24px; }
   .spot-integration-grid > article, .spot-test-grid > article, .spot-estimator-heading { padding: 24px; }
   .estimator-steps { padding-inline: 22px; }
-  .spot-hardware figcaption { font-size: 8px; }
+  .spot-hardware figcaption { font-size: 12px; }
   .spot-specs { gap: 24px 16px; }
   .spot-hero .hero-actions .button { width: 100%; }
 }

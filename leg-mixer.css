@@ -30,6 +30,15 @@
 .tilt-endpoints { display: flex; justify-content: space-between; color: #a5bac3; font-size: 10px; }
 .tilt-details { margin-top: 24px; border-top: 1px solid #405760; padding-top: 16px; color: #acbfc7; font-size: 11px; }
 .tilt-details summary { padding-block: 4px; color: #d4e1e6; cursor: pointer; font-size: 12px; }
+.math-summary { display: grid; grid-template-columns: .8fr 1.1fr .8fr 1fr; gap: 20px; margin-top: 20px; align-items: start; }
+.math-summary label, .math-summary > div > span { display: block; color: #adc3cc; font-size: 12px; }
+.math-summary select { display: block; width: 100%; min-height: 42px; padding: 8px; margin-top: 8px; background: #193541; color: white; border: 1px solid #718b96; border-radius: 3px; font: 500 13px var(--sans); }
+.math-summary code { display: block; margin-top: 12px; color: #dbe8ed; font: 500 12px/1.7 var(--mono); overflow-wrap: anywhere; }
+.math-summary strong { display: block; margin-top: 6px; color: #efb08c; font: 500 24px/1.4 var(--mono); }
+.math-summary small { color: #b6cbd2; font-size: 12px; }
+.math-expanded { margin-top: 20px; }
+.math-expanded > summary { cursor: pointer; padding: 14px 0; color: #e0e9ed; font-size: 13px; border-top: 1px solid #405760; }
+.tilt-leg-states .is-followed { outline: 1px solid #c6d8de; outline-offset: 5px; }
 .tilt-math { grid-column: 1 / -1; padding: 32px; color: #e0e9eb; background: #0b2029; border-top: 1px solid #405760; min-width: 0; }
 .math-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
 .math-heading h3 { margin: 10px 0 12px; color: white; font-size: clamp(23px, 3vw, 30px); line-height: 1.2; letter-spacing: -.025em; }
@@ -67,5 +76,25 @@
 .math-note { margin: 20px 0 0; color: #9db5bf; font-size: 11px; max-width: 900px; }
 @media (max-width: 1100px) { .math-heading { grid-template-columns: 1fr; gap: 20px; } .math-legs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .tilt-math { padding: 20px; } .math-scaling { grid-template-columns: 26px minmax(0, 1fr); gap: 12px; } .math-scale-result { grid-column: 2; text-align: left; } .math-legs { grid-template-columns: 1fr; } .math-inputs { flex-wrap: wrap; } .math-inputs > div { min-width: 0; flex: 1; } .math-substitution { min-height: 0; } }
-@media (max-width: 980px) { .leg-mixer { grid-template-columns: 1fr; } .tilt-visual { padding: 24px; } .tilt-controls { border-left: 0; border-top: 1px solid #405760; } .tilt-robot { max-width: 600px; margin-inline: auto; } }
-@media (max-width: 460px) { .tilt-visual, .tilt-controls { padding: 20px; } .tilt-leg-states { grid-template-columns: 1fr 1fr; gap: 14px; } .tilt-presets { grid-template-columns: 1fr; } .tilt-controls .tilt-explanation { min-height: 0; } .tilt-presets button { min-height: 46px; } }
+@media (max-width: 980px) {
+  .math-summary { grid-template-columns: 1fr 1fr; }
+  .tilt-visual { position: sticky; align-self: start; top: 76px; z-index: 5; padding: 12px 20px; border-bottom: 1px solid #405760; }
+  .tilt-robot { width: min(100%, 340px); max-height: 200px; margin-block: 4px; }
+  .tilt-leg-states { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+  .tilt-leg-states > div { padding-top: 6px; }
+  .tilt-leg-states span { font-size: 11px; }.tilt-leg-states strong { font-size: 12px; }
+  .tilt-controls { padding: 22px; }
+  .tilt-controls > p { margin-block: 12px; }
+  .tilt-presets { grid-template-columns: 1fr 1fr; margin-top: 16px; }
+  .tilt-presets button { min-height: 44px; font-size: 12px; }
+  .tilt-controls .tilt-explanation { min-height: 0; margin-block: 16px; }
+  .tilt-sliders { gap: 12px; padding-top: 12px; }
+  .tilt-details { margin-top: 16px; padding-top: 10px; }
+  .math-heading { grid-template-columns: 1fr; gap: 12px; }
+  .math-heading .tilt-step { display: none; }
+  .math-heading h3 { font-size: 23px; margin-top: 0; }
+  .math-inputs > div { padding: 10px 14px; }
+  .math-inputs strong { font-size: 20px; margin-top: 2px; }
+}
+@media (max-width: 760px) { .tilt-visual { top: 68px; } }
+@media (max-width: 980px) { .leg-mixer { grid-template-columns: 1fr; } .tilt-controls { border-left: 0; border-top: 1px solid #405760; } .tilt-robot { margin-inline: auto; } }
