@@ -60,8 +60,15 @@ document.querySelectorAll('[data-leg-mixer]').forEach((mixer, index) => {
         <label>Front / back <output data-pitch-output>Level</output><input type="range" min="-20" max="20" step="1" value="0" data-pitch aria-label="Raise the front or rear of the board"><span class="tilt-endpoints"><span>Front up</span><span>Rear up</span></span></label>
         <label>Left / right <output data-roll-output>Level</output><input type="range" min="-20" max="20" step="1" value="0" data-roll aria-label="Raise the left or right of the board"><span class="tilt-endpoints"><span>Left up</span><span>Right up</span></span></label>
       </div>
-      <details class="tilt-details"><summary>How this relates to the real controller</summary><p>The illustration uses the four-leg mixing equations from my v3 controller. The drawing is simplified; slider position does not represent a measured board angle.</p><p data-scale>Corrections stay within ±20° of the base stance.</p><p>Numbers below each leg show its joint-command correction. They appear here for reference, not as measurements of the illustration.</p></details>
-    </div>`;
+      <details class="tilt-details"><summary>How this relates to the real controller</summary><p>The illustration uses the four-leg mixing equations from my v3 controller. The drawing is simplified; slider position does not represent a measured board angle.</p><p data-scale>Corrections stay within ±20° of the base stance.</p><p>The live math below shows the requested corrections and nominal joint commands, before per-servo calibration offsets.</p></details>
+    </div>
+    <section class="tilt-math" aria-labelledby="math-title-${index}">
+      <div class="math-heading"><div><span class="tilt-step">FOLLOW THE NUMBERS</span><h3 id="math-title-${index}">The math behind the movement.</h3><p>The controls set <b>P</b> (pitch correction) and <b>R</b> (roll correction). Each leg gets a different combination of the two.</p></div><div class="math-inputs"><div><span>Pitch command / P</span><strong data-math-pitch>0.0°</strong></div><div><span>Roll command / R</span><strong data-math-roll>0.0°</strong></div></div></div>
+      <div class="math-scaling"><span class="math-step-number" aria-hidden="true">s</span><div><h4>A shared factor keeps the corrections within the leg travel.</h4><p>Find the largest of the four requests below. If its magnitude exceeds 20°, reduce all four by the same factor. At zero input, use s = 1.</p><code>s = min(1, 20° / largest correction)</code></div><div class="math-scale-result"><span data-math-scale-calculation>No scaling needed</span><strong data-math-scale>1.00×</strong></div></div>
+      <div class="math-step-heading"><span class="math-step-number" aria-hidden="true">±</span><div><h4>Each leg mixes the two commands with different signs.</h4><p>Positive correction shortens a leg; negative correction lengthens it.</p></div></div>
+      <div class="math-legs">${Object.entries(legs).map(([key, leg]) => `<article data-math-leg="${key}"><h5>${leg.name}</h5><code class="math-symbolic">${({ fl: '−P − R', fr: '−P + R', rl: '+P − R', rr: '+P + R' })[key]}</code><p class="math-substitution" data-substitution>0 − 0 = 0°</p><div class="math-final"><span>After scaling</span><code data-scaled-formula>0° × 1.00</code><strong data-final-correction>0.0°</strong></div><p class="math-movement" data-math-motion>Starting stance</p><div class="math-compression"><span>Base stance + correction</span><code data-compression>25° + 0° = 25°</code></div><dl class="math-joints"><div><dt>Thigh</dt><dd data-thigh>115.0°</dd></div><div><dt>Knee</dt><dd data-knee>65.0°</dd></div></dl></article>`).join('')}</div>
+      <p class="math-note">Displayed values are rounded. Joint angles are nominal commands before calibration offsets. The 25° base value is a joint-compression parameter, not leg height. This visualizes the controller’s mixing logic, not full robot dynamics or measured motion.</p>
+    </section>`;
 
   const pitchInput = mixer.querySelector('[data-pitch]');
   const rollInput = mixer.querySelector('[data-roll]');
@@ -106,6 +113,32 @@ document.querySelectorAll('[data-leg-mixer]').forEach((mixer, index) => {
     const pitch = Number(pitchInput.value);
     const roll = Number(rollInput.value);
     const { corrections, scale } = mixLegCorrections(pitch, roll);
+    const raw = { fl: -pitch - roll, fr: -pitch + roll, rl: pitch - roll, rr: pitch + roll };
+    const peak = Math.max(...Object.values(raw).map(Math.abs));
+    const operand = number => `(${number < 0 ? '−' : '+'}${Math.abs(number).toFixed(0)})`;
+    const expressions = {
+      fl: `−${operand(pitch)} − ${operand(roll)}`,
+      fr: `−${operand(pitch)} + ${operand(roll)}`,
+      rl: `${operand(pitch)} − ${operand(roll)}`,
+      rr: `${operand(pitch)} + ${operand(roll)}`
+    };
+    mixer.querySelector('[data-math-pitch]').textContent = signed(pitch);
+    mixer.querySelector('[data-math-roll]').textContent = signed(roll);
+    mixer.querySelector('[data-math-scale]').textContent = `${scale.toFixed(2)}×`;
+    mixer.querySelector('[data-math-scale-calculation]').textContent = peak > 20 ? `20° ÷ ${peak.toFixed(0)}° = ${scale.toFixed(2)}` : `Largest request: ${peak.toFixed(0)}° ≤ 20°`;
+    for (const [key, correction] of Object.entries(corrections)) {
+      const mathLeg = mixer.querySelector(`[data-math-leg="${key}"]`);
+      const compression = 25 + correction;
+      const right = key === 'fr' || key === 'rr';
+      mathLeg.dataset.direction = correction > .05 ? 'compress' : correction < -.05 ? 'extend' : 'neutral';
+      mathLeg.querySelector('[data-substitution]').textContent = `${expressions[key]} = ${signed(raw[key])}`;
+      mathLeg.querySelector('[data-final-correction]').textContent = signed(correction);
+      mathLeg.querySelector('[data-scaled-formula]').textContent = `${signed(raw[key])} × ${scale.toFixed(2)}`;
+      mathLeg.querySelector('[data-math-motion]').textContent = correction > .05 ? 'Shorter leg' : correction < -.05 ? 'Longer leg' : 'Starting stance';
+      mathLeg.querySelector('[data-compression]').textContent = `25° ${correction < 0 ? '−' : '+'} ${Math.abs(correction).toFixed(1)}° = ${compression.toFixed(1)}°`;
+      mathLeg.querySelector('[data-thigh]').textContent = `${(90 + (right ? -compression : compression)).toFixed(1)}°`;
+      mathLeg.querySelector('[data-knee]').textContent = `${(90 + (right ? compression : -compression)).toFixed(1)}°`;
+    }
     mixer.querySelector('[data-pitch-output]').textContent = pitch < 0 ? 'Front raised' : pitch > 0 ? 'Rear raised' : 'Level';
     mixer.querySelector('[data-roll-output]').textContent = roll > 0 ? 'Right raised' : roll < 0 ? 'Left raised' : 'Level';
     for (const [key, correction] of Object.entries(corrections)) {
