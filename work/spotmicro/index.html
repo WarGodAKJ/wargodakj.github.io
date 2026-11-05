@@ -56,21 +56,7 @@
 
       <section class="case-section is-dark" id="leg-control"><div class="shell">
         <div class="case-section-heading"><p class="eyebrow">03 / Four-leg control</p><h2>Two axis commands.<br>Four coordinated corrections.</h2><p>Pitch and roll each use proportional correction plus gyro-rate feedback. A four-corner mixer combines them, then scales the corrections together when a diagonal would exceed the available travel.</p></div>
-        <div class="leg-mixer" data-leg-mixer>
-          <div class="mixer-panel"><div class="mixer-heading"><span class="spot-label">Controller explorer</span><span>Top view / front ↑</span></div><div class="mixer-chassis" aria-label="Four leg corrections in top view">
-            <div class="mixer-leg" data-leg="fl"><span>Front left</span><strong data-correction>−16.0°</strong><small data-motion>Extend</small><div class="mixer-meter"><i></i></div></div>
-            <div class="mixer-leg" data-leg="fr"><span>Front right</span><strong data-correction>−4.0°</strong><small data-motion>Extend</small><div class="mixer-meter"><i></i></div></div>
-            <div class="mixer-body" aria-hidden="true"><span>FRONT ↑</span><div class="mixer-board"><i></i><i></i><i></i><i></i><strong>TEENSY</strong><small>PITCH / ROLL</small></div><span>REAR ↓</span></div>
-            <div class="mixer-leg" data-leg="rl"><span>Rear left</span><strong data-correction>+4.0°</strong><small data-motion>Compress</small><div class="mixer-meter"><i></i></div></div>
-            <div class="mixer-leg" data-leg="rr"><span>Rear right</span><strong data-correction>+16.0°</strong><small data-motion>Compress</small><div class="mixer-meter"><i></i></div></div>
-          </div><p class="mixer-legend"><span>− Extend</span><span>+ Compress</span></p></div>
-          <div class="mixer-controls"><h3>Try the command mix.</h3><p>Change the two controller outputs to see the leg corrections. Values are joint-command adjustments, not measured body angles.</p>
-            <label>Pitch correction <output data-pitch-output>+10°</output><input type="range" min="-20" max="20" step="1" value="10" data-pitch aria-label="Pitch correction in degrees"></label>
-            <label>Roll correction <output data-roll-output>+6°</output><input type="range" min="-20" max="20" step="1" value="6" data-roll aria-label="Roll correction in degrees"></label>
-            <div class="mixer-presets" aria-label="Example controller outputs"><button type="button" data-preset="10,0">Pitch</button><button type="button" data-preset="0,10">Roll</button><button type="button" data-preset="20,20">Diagonal</button><button type="button" data-preset="0,0">Reset</button></div>
-            <p class="mixer-scale" data-scale role="status">Within the ±20° leg limit.</p><p class="mixer-disclaimer">Command-mixing illustration using the v3 equations. It does not simulate the robot’s dynamics or predict stability.</p><noscript><p>The example shows pitch +10° and roll +6°. Enable JavaScript to change the commands.</p></noscript>
-          </div>
-        </div>
+        <div class="leg-mixer" data-leg-mixer><p class="mixer-fallback">When one side of the board rises, the robot shortens the legs on that side and extends the opposite legs. Enable JavaScript to try the interactive illustration.</p></div>
         <div class="spot-control-details"><article><span class="spot-label">Axis feedback</span><h3>PD correction</h3><p>Pitch: Kp 2.2 · Kd 0.06<br>Roll: Kp 1.8 · Kd 0.06</p><p>Deadbands reduce small corrections: 0.40° for angle error and 1.20°/s for angular rate.</p></article><article><span class="spot-label">Geometry</span><h3>Mirrored joints</h3><p>Rear: +pitch ± roll<br>Front: −pitch ± roll</p><p>Left thighs/knees use 90° + c / 90° − c; right joints mirror those signs. Hips hold their calibrated center.</p></article><article><span class="spot-label">Motion bounds</span><h3>Limit and smooth</h3><p>25° base compression · ±20° correction<br>60°/s maximum correction slew rate</p><p>Apply channel offsets, constrain joint commands, and retain fractional angles until pulse conversion.</p></article></div>
         <a class="text-link spot-light-link" href="https://github.com/WarGodAKJ/SpotMicro/blob/main/firmware/experiments/pitch_roll_stabilization_v3/pitch_roll_stabilization_v3.ino" target="_blank" rel="noopener">Read the current v3 controller <span aria-hidden="true">↗</span></a>
       </div></section>
