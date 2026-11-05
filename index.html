@@ -54,13 +54,19 @@
     <main id="main-content">
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="shell hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Mechanical engineering · Product development · Mechatronics</p>
-            <h1 id="hero-title">Mechanical engineering across design, testing, and analysis.</h1>
-            <p class="hero-lede">I am a Penn State mechanical engineering student with experience in product development, test hardware, manufacturing, controls, and simulation.</p>
+          <div class="hero-copy" id="about">
+            <p class="eyebrow">Penn State · Mechanical engineering</p>
+            <h1 id="hero-title">Atharva Joshi</h1>
+            <p class="hero-specialty">Mechanical design, product development, and mechatronics.</p>
+            <p class="hero-lede">I’m completing a B.S. in Mechanical Engineering with a Mechatronics minor at Penn State. My work includes connector design, test fixtures, robotics, and engineering analysis.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="#selected-work">View selected projects <span aria-hidden="true">↓</span></a>
               <a class="button button-secondary" href="assets/Atharva_Joshi_Resume.pdf" target="_blank" rel="noopener">View resume <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-links" aria-label="Professional profiles">
+              <a href="https://www.linkedin.com/in/atharvajoshi2026" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/WarGodAKJ" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              <a href="mailto:atharvajosh@gmail.com">Email <span aria-hidden="true">↗</span></a>
             </div>
             <dl class="hero-facts" aria-label="Current profile">
               <div>
@@ -78,27 +84,9 @@
             </dl>
           </div>
 
-          <div class="hero-evidence" aria-label="Selected engineering evidence">
-            <figure class="evidence-frame evidence-frame-main">
-              <img src="assets/te-osfp-test-module.png" alt="Creo rendering of an OSFP 224G test-module assembly" width="1640" height="1176">
-              <figcaption><span>01</span> Creo assembly · product release</figcaption>
-            </figure>
-            <figure class="evidence-frame evidence-frame-secondary">
-              <img src="assets/spotmicro-robot.png" alt="SpotMicro quadruped robot with integrated electronics and wiring" width="1448" height="1086">
-              <figcaption><span>02</span> Integrated hardware · control</figcaption>
-            </figure>
-            <div class="evidence-note" aria-hidden="true">
-              <span>DESIGN</span><i></i><span>BUILD</span><i></i><span>TEST</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="proof-bar" aria-label="Engineering capabilities">
-        <div class="shell proof-grid">
-          <div><span>01</span><strong>Mechanical design</strong><small>Creo · SolidWorks · GD&amp;T · DFM/DFA</small></div>
-          <div><span>02</span><strong>Hardware integration</strong><small>Mechanisms · sensors · actuators · embedded control</small></div>
-          <div><span>03</span><strong>Analysis and testing</strong><small>Test fixtures · dynamics · thermal models · FEA</small></div>
+          <figure class="hero-portrait">
+            <img src="assets/bkl.jpg" alt="Atharva Joshi" width="1024" height="1024" fetchpriority="high">
+          </figure>
         </div>
       </section>
 
@@ -106,8 +94,8 @@
         <div class="shell">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Selected projects</p>
-              <h2 id="selected-work-title">Detailed examples of my engineering work.</h2>
+              <p class="eyebrow">Engineering portfolio</p>
+              <h2 id="selected-work-title">Selected projects.</h2>
             </div>
             <p>These projects cover professional mechanical design, mechatronics, physical prototyping, and thermal analysis.</p>
           </div>
@@ -115,50 +103,12 @@
         </div>
       </section>
 
-      <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="shell">
-          <div class="section-heading section-heading-compact">
-            <div>
-              <p class="eyebrow">Technical areas</p>
-              <h2 id="capabilities-title">Engineering work and methods.</h2>
-            </div>
-          </div>
-
-          <div class="capability-grid">
-            <article>
-              <span class="capability-index">A</span>
-              <h3>Product development</h3>
-              <p>Develop CAD, drawings, tolerance analyses, release documentation, and manufacturing-ready hardware from project requirements.</p>
-              <small>Creo · SolidWorks · GD&amp;T · PLM/PDM</small>
-            </article>
-            <article>
-              <span class="capability-index">B</span>
-              <h3>Robotics and controls</h3>
-              <p>Integrate sensors, actuators, electronics, and embedded code using calibration and staged hardware testing.</p>
-              <small>C++ · Arduino/Teensy · IMUs · PID</small>
-            </article>
-            <article>
-              <span class="capability-index">C</span>
-              <h3>Analysis and simulation</h3>
-              <p>Build models, test assumptions, compare model fidelity, and document the limits of the analysis.</p>
-              <small>MATLAB · Simulink · Ansys · Abaqus</small>
-            </article>
-            <article>
-              <span class="capability-index">D</span>
-              <h3>Testing and reliability</h3>
-              <p>Design fixtures, investigate failure modes, validate mechanisms, and use test data to support design decisions.</p>
-              <small>Shock/vibration · RCA · Minitab · qualification</small>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section experience" id="experience" aria-labelledby="experience-title">
         <div class="shell experience-layout">
           <div class="experience-intro">
-            <p class="eyebrow">Professional experience</p>
-            <h2 id="experience-title">Mechanical engineering experience.</h2>
-            <p>My internship work includes product design, engineering release, manufacturing requirements, physical validation, reliability testing, and technical documentation.</p>
+            <p class="eyebrow">Professional background</p>
+            <h2 id="experience-title">Experience.</h2>
+            <p>Internships in connector product development and mechanical reliability.</p>
           </div>
 
           <div class="experience-list">
@@ -173,6 +123,7 @@
                 <ul class="inline-tags" aria-label="TE Connectivity skills">
                   <li>Product development</li><li>DFM / NPI</li><li>Validation</li>
                 </ul>
+                <a class="text-link" href="work/te-connectivity/">View internship projects <span aria-hidden="true">↗</span></a>
               </div>
             </article>
 
@@ -187,6 +138,7 @@
                 <ul class="inline-tags" aria-label="Amphenol skills">
                   <li>Fixture design</li><li>Root-cause analysis</li><li>Qualification</li>
                 </ul>
+                <a class="text-link" href="work/amphenol/">View internship projects <span aria-hidden="true">↗</span></a>
               </div>
             </article>
           </div>
@@ -205,25 +157,6 @@
           <div class="supporting-grid" data-supporting-projects></div>
           <div class="section-action">
             <a class="button button-ink" href="work/">Browse the complete project library <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <div class="shell about-grid">
-          <figure class="portrait-frame">
-            <img src="assets/bklreturns.jpg" alt="Atharva Joshi" width="1200" height="1600" loading="lazy">
-          </figure>
-          <div class="about-copy">
-            <p class="eyebrow">About</p>
-            <h2 id="about-title">Mechanical engineering and mechatronics.</h2>
-            <p>I’m completing a B.S. in Mechanical Engineering with a Mechatronics minor at Penn State. I’m most engaged by work where geometry, manufacturing, electronics, controls, and testing influence one another.</p>
-            <p>My projects include connector product development, reliability fixtures, assistive devices, quadruped controls, thermal modeling, vibration analysis, and digital hardware.</p>
-            <div class="about-links">
-              <a href="https://www.linkedin.com/in/atharvajoshi2026" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-              <a href="https://github.com/WarGodAKJ" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-              <a href="assets/Atharva_Joshi_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
-            </div>
           </div>
         </div>
       </section>

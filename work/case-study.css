@@ -1,9 +1,23 @@
 .case-hero {
-  padding-block: clamp(64px, 9vw, 116px) clamp(70px, 10vw, 124px);
+  padding-block: clamp(40px, 6vw, 72px) clamp(56px, 7vw, 88px);
   color: var(--white);
-  background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 34px 34px,
-    var(--navy);
+  background: var(--navy);
+}
+
+.case-hero .eyebrow,
+.page-hero .eyebrow,
+.is-dark .eyebrow,
+.is-dark .project-eyebrow {
+  color: #efaa87;
+}
+
+.case-hero .button-primary {
+  color: var(--navy);
+  background: #efaa87;
+}
+
+.case-hero .button-primary:hover {
+  background: #f4c0a7;
 }
 
 .breadcrumb {
@@ -33,7 +47,7 @@
 .case-hero h1 {
   max-width: 780px;
   margin: 0;
-  font-size: clamp(44px, 6.2vw, 76px);
+  font-size: clamp(36px, 4.7vw, 60px);
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.055em;
@@ -43,13 +57,14 @@
   max-width: 720px;
   margin: 28px 0 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: clamp(17px, 1.7vw, 20px);
+  font-size: clamp(16px, 1.5vw, 18px);
 }
 
 .case-cover {
   margin: 0;
   background: #dfe3e3;
-  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.28);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .case-cover img {
@@ -79,6 +94,7 @@
 .case-summary-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  margin-block: 0;
 }
 
 .case-summary-grid > div {
@@ -108,7 +124,7 @@
 }
 
 .case-section {
-  padding-block: clamp(78px, 10vw, 130px);
+  padding-block: clamp(56px, 7vw, 88px);
 }
 
 .case-section.is-white {
@@ -127,7 +143,7 @@
 
 .case-section-heading h2 {
   margin: 0;
-  font-size: clamp(36px, 5vw, 58px);
+  font-size: clamp(30px, 3.5vw, 44px);
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.045em;
@@ -224,6 +240,7 @@
   overflow: hidden;
   background: #dfe3e3;
   border: 1px solid var(--line);
+  border-radius: 8px;
 }
 
 .case-figure img {
@@ -361,7 +378,7 @@
 
 .controller-flow {
   display: grid;
-  grid-template-columns: minmax(140px, 1fr) 32px minmax(140px, 1fr) 32px minmax(140px, 1fr) 32px minmax(140px, 1fr) 32px minmax(140px, 1fr);
+  grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr);
   align-items: stretch;
   margin-top: 38px;
 }
@@ -370,7 +387,9 @@
   display: grid;
   align-content: center;
   min-height: 174px;
-  padding: 22px;
+  min-width: 0;
+  padding: 18px;
+  overflow-wrap: anywhere;
   background: var(--white);
   border: 1px solid var(--line);
 }
@@ -476,7 +495,7 @@
 }
 
 .module-card {
-  min-height: 300px;
+  min-height: 240px;
   padding: clamp(28px, 4vw, 46px);
   border-right: 1px solid var(--line-light);
   border-bottom: 1px solid var(--line-light);
