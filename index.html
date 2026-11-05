@@ -22,7 +22,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leg-mixer.css">
     <script type="module" src="portfolio.js"></script>
+    <script type="module" src="leg-mixer.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -86,6 +88,7 @@
 
           <figure class="hero-portrait">
             <img src="assets/bkl.jpg" alt="Atharva Joshi" width="1024" height="1024" fetchpriority="high">
+            <figcaption><span>ME / Mechatronics</span><span>Penn State</span></figcaption>
           </figure>
         </div>
       </section>
@@ -113,6 +116,7 @@
 
           <div class="experience-list">
             <article class="experience-item">
+              <div class="experience-logo"><img src="assets/te-connectivity-logo.svg" alt="TE Connectivity" loading="lazy"></div>
               <div class="experience-meta">
                 <span>2026</span>
                 <span>Mechanical Engineering Intern</span>
@@ -128,6 +132,7 @@
             </article>
 
             <article class="experience-item">
+              <div class="experience-logo"><img src="assets/amphenol-cs-logo.png" alt="Amphenol Communications Solutions" loading="lazy"></div>
               <div class="experience-meta">
                 <span>2025</span>
                 <span>Mechanical Integrity Intern</span>
@@ -141,6 +146,29 @@
                 <a class="text-link" href="work/amphenol/">View internship projects <span aria-hidden="true">↗</span></a>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workbench" aria-labelledby="workbench-title">
+        <div class="shell">
+          <div class="section-heading"><div><p class="eyebrow">Inside the robot / Control study 01</p><h2 id="workbench-title">From feedback to leg motion.</h2></div><p>A closer look at my SpotMicro controller. Adjust the pitch and roll commands to explore how it distributes correction across four legs.</p></div>
+          <div class="leg-mixer" data-leg-mixer>
+            <div class="mixer-panel"><div class="mixer-heading"><span>SPOTMICRO / FOUR-CORNER MIXER</span><span>Top view / front ↑</span></div><div class="mixer-chassis" aria-label="Four leg corrections in top view">
+              <div class="mixer-leg" data-leg="fl"><span>Front left</span><strong data-correction>−16.0°</strong><small data-motion>Extend</small><div class="mixer-meter"><i></i></div></div>
+              <div class="mixer-leg" data-leg="fr"><span>Front right</span><strong data-correction>−4.0°</strong><small data-motion>Extend</small><div class="mixer-meter"><i></i></div></div>
+              <div class="mixer-body" aria-hidden="true"><span>FRONT ↑</span><div class="mixer-board"><i></i><i></i><i></i><i></i><strong>TEENSY</strong><small>PITCH / ROLL</small></div><span>REAR ↓</span></div>
+              <div class="mixer-leg" data-leg="rl"><span>Rear left</span><strong data-correction>+4.0°</strong><small data-motion>Compress</small><div class="mixer-meter"><i></i></div></div>
+              <div class="mixer-leg" data-leg="rr"><span>Rear right</span><strong data-correction>+16.0°</strong><small data-motion>Compress</small><div class="mixer-meter"><i></i></div></div>
+            </div><p class="mixer-legend"><span>− Extend</span><span>+ Compress</span></p></div>
+            <div class="mixer-controls"><h3>Try the command mix.</h3><p>These are joint-command adjustments in degrees, not measured body angles.</p>
+              <label>Pitch correction <output data-pitch-output>+10°</output><input type="range" min="-20" max="20" step="1" value="10" data-pitch aria-label="Pitch correction in degrees"></label>
+              <label>Roll correction <output data-roll-output>+6°</output><input type="range" min="-20" max="20" step="1" value="6" data-roll aria-label="Roll correction in degrees"></label>
+              <div class="mixer-presets" aria-label="Example controller outputs"><button type="button" data-preset="10,0">Pitch</button><button type="button" data-preset="0,10">Roll</button><button type="button" data-preset="20,20">Diagonal</button><button type="button" data-preset="0,0">Reset</button></div>
+              <p class="mixer-scale" data-scale role="status">Within the ±20° leg limit.</p><p class="mixer-disclaimer">Illustrates the v3 mixing equations, not simulated dynamics or measured performance.</p>
+              <a class="text-link workbench-link" href="work/spotmicro/#leg-control">See the controller and hardware tests <span aria-hidden="true">↗</span></a>
+              <noscript><p>Example: pitch +10° and roll +6°. Enable JavaScript to change the commands.</p></noscript>
+            </div>
           </div>
         </div>
       </section>

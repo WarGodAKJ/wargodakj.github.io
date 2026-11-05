@@ -226,10 +226,54 @@ a {
   max-width: 380px;
   justify-self: end;
   margin: 0;
-  overflow: hidden;
-  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+  border-radius: 0;
+  outline: 1px solid var(--line);
+  outline-offset: 12px;
   background: var(--paper-deep);
 }
+
+.hero-portrait::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: -20px;
+  background: linear-gradient(var(--steel), var(--steel)) left top / 28px 1px no-repeat,
+    linear-gradient(var(--steel), var(--steel)) left top / 1px 28px no-repeat,
+    linear-gradient(var(--steel), var(--steel)) right bottom / 28px 1px no-repeat,
+    linear-gradient(var(--steel), var(--steel)) right bottom / 1px 28px no-repeat;
+}
+
+.hero-portrait figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  background: var(--navy);
+  color: #c9dbde;
+  font: 500 8px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.hero {
+  background: linear-gradient(90deg, rgba(47,104,117,.045) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(rgba(47,104,117,.045) 1px, transparent 1px) 0 0 / 40px 40px, var(--paper);
+}
+
+.experience-logo {
+  align-self: flex-start;
+  width: 190px;
+  height: 86px;
+  padding: 14px 18px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.experience-logo img { width: 100%; height: 100%; object-fit: contain; }
+.workbench { background: #e6eceb; }
+.workbench .workbench-link { color: white; margin-top: 8px; font-size: 12px; }
 
 .hero-portrait img {
   width: 100%;
@@ -1411,7 +1455,10 @@ a {
     grid-row: 1;
     justify-self: start;
     width: 180px;
+    margin: 12px 0 8px 12px;
   }
+
+  .hero-portrait figcaption { flex-direction: column; gap: 4px; font-size: 7px; }
 
   .hero-portrait img {
     aspect-ratio: 1;
