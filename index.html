@@ -96,7 +96,19 @@
 
       <section class="section workbench" id="try-robot" aria-labelledby="workbench-title">
         <div class="shell">
-          <div class="section-heading"><div><p class="eyebrow">Try my SpotMicro controller</p><h2 id="workbench-title">How does a robot<br>stay level?</h2></div><p>Choose which side of the board to raise. Watch the legs shorten and extend to keep the body level.</p></div>
+          <div class="robot-project-intro">
+            <figure class="robot-project-photo">
+              <a href="work/spotmicro/" aria-label="Read about my SpotMicro robot project"><img src="assets/spotmicro-robot.png" alt="My physical SpotMicro quadruped with its twelve servos, electronics, and wiring" width="1448" height="1086" loading="lazy"></a>
+              <figcaption>The actual robot · SpotMicro quadruped</figcaption>
+            </figure>
+            <div class="robot-project-copy">
+              <p class="eyebrow">My robotics project</p>
+              <h2 id="workbench-title">Meet SpotMicro.</h2>
+              <p>I integrated and calibrated this four-legged robot’s electronics and developed its pitch and roll leveling controller. On hardware, it adjusts its legs to respond to a tilting surface.</p>
+              <a class="text-link" href="work/spotmicro/">Read the project and hardware tests <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="robot-demo-intro"><h3>Try how its legs respond.</h3><p>The illustration below shows the leg-mixing logic used in this robot’s controller. Choose a side of the board to raise, then watch the legs and equations change.</p></div>
           <div class="leg-mixer" data-leg-mixer><p class="mixer-fallback">When one side of the board rises, the robot shortens the legs on that side and extends the opposite legs. Enable JavaScript to try the interactive illustration.</p></div>
           <a class="text-link" href="work/spotmicro/#leg-control">See how I built and tested SpotMicro <span aria-hidden="true">↗</span></a>
         </div>
