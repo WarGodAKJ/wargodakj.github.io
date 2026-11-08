@@ -13,12 +13,12 @@
 .portfolio-home .hero h1 { font-size: clamp(48px, 6.5vw, 88px); letter-spacing: -.06em; }
 .portfolio-home .hero h1 span { color: #edaa80; }
 .portfolio-home .hero .eyebrow { color: #efbd98; font-size: 13px; }
-.hero-availability { margin: 18px 0 0; padding-top: 18px; border-top: 1px solid #8aa4ae80; color: #edaa80; font-size: 14px; font-weight: 600; line-height: 1.6; }
 .portfolio-home .hero-specialty { color: #f5f0e5; }
 .portfolio-home .hero-lede { color: #d0dce0; font-size: 17px; }
 .portfolio-home .hero-facts { grid-template-columns: minmax(0,1.35fr) minmax(0,1fr); border-color: #8aa4ae80; gap: 28px; padding-top: 24px; }
 .portfolio-home .hero-facts dt { color: #efbd98; font-size: 13px; }
 .portfolio-home .hero-facts dd { color: #f5f0e5; font-size: 18px; font-weight: 600; line-height: 1.45; }
+.hero-school { display: block; margin-top: 4px; color: #bfcfd3; font-size: 16px; font-weight: 400; }
 .portfolio-home .hero-links { gap: 8px 20px; }
 .portfolio-home .hero-links a { color: #d8e4e8; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; min-width: 44px; font-size: 14px; }
 .portfolio-home .hero-actions { align-items: center; }
@@ -110,9 +110,7 @@
   .portrait-screw::after { inset: 1px; background-size: 1px 100%,100% 1px; }
   .portfolio-home .hero-portrait::before { inset: -10px; }
   .portfolio-home .hero-portrait figcaption { display: none; }
-  .portfolio-home .hero-portrait .portrait-caption { min-height: 44px; padding: 0; justify-content: center; }
-  .portfolio-home .hero-portrait.has-autoplay [data-panel-caption] { display: none; }
-  .portrait-play { min-width: 100%; min-height: 44px; padding: 6px; }
+  .portfolio-home .hero-portrait .portrait-caption { display: none; }
   .portrait-collage { grid-template-columns: 1fr; grid-template-rows: 1fr; gap: 0; }
   .portrait-project { display: none; }
   .portrait-project.is-mobile-project { display: grid; grid-column: 1; grid-row: 1; }
@@ -120,7 +118,6 @@
   .project-label-wide { display: none; }
   .project-label-compact { display: inline; }
   .portfolio-home .hero-portrait .portrait-project img { padding: 3px; }
-  .hero-availability { margin: 0; font-size: 14px; }
   .portfolio-home .hero-specialty { margin-top: 12px; font-size: 21px; }
   .portfolio-home .hero-lede { margin: 0; font-size: 16px; }
   .portfolio-home .hero-actions { margin-top: 8px; gap: 10px; }
