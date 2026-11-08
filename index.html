@@ -24,11 +24,12 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="leg-mixer.css?v=spot-silhouette-20261108a">
-    <link rel="stylesheet" href="home.css?v=copper-20261108">
+    <link rel="stylesheet" href="home.css?v=scroll-sparks-20261108">
     <script type="module" src="portfolio.js"></script>
     <script type="module" src="leg-mixer.js?v=spot-silhouette-20261108a"></script>
     <script type="module" src="hero-gears.js?v=copper-20261108"></script>
     <script type="module" src="hero-portrait.js?v=copper-20261108"></script>
+    <script type="module" src="hero-scroll.js?v=scroll-sparks-20261108"></script>
   </head>
   <body class="portfolio-home">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -121,7 +122,34 @@
             <span class="portrait-sr-only" role="status" data-portrait-status></span>
           </figure>
         </div>
+        <a class="hero-scroll" href="#try-robot" aria-label="Scroll to my SpotMicro project">
+          <span>Scroll</span>
+          <svg class="scroll-gears" viewBox="0 0 56 68" fill="none" aria-hidden="true" focusable="false">
+            <defs><g id="scroll-cue-profile"><path d="M10.63,-2.85L10.86,-1.72L13.92,-1.46L13.92,1.46L10.86,1.72L10.63,2.85L10.27,3.94L12.79,5.69L11.33,8.23L8.55,6.92L7.78,7.78L6.92,8.55L8.23,11.33L5.69,12.79L3.94,10.27L2.85,10.63L1.72,10.86L1.46,13.92L-1.46,13.92L-1.72,10.86L-2.85,10.63L-3.94,10.27L-5.69,12.79L-8.23,11.33L-6.92,8.55L-7.78,7.78L-8.55,6.92L-11.33,8.23L-12.79,5.69L-10.27,3.94L-10.63,2.85L-10.86,1.72L-13.92,1.46L-13.92,-1.46L-10.86,-1.72L-10.63,-2.85L-10.27,-3.94L-12.79,-5.69L-11.33,-8.23L-8.55,-6.92L-7.78,-7.78L-6.92,-8.55L-8.23,-11.33L-5.69,-12.79L-3.94,-10.27L-2.85,-10.63L-1.72,-10.86L-1.46,-13.92L1.46,-13.92L1.72,-10.86L2.85,-10.63L3.94,-10.27L5.69,-12.79L8.23,-11.33L6.92,-8.55L7.78,-7.78L8.55,-6.92L11.33,-8.23L12.79,-5.69L10.27,-3.94Z"/><circle r="5"/></g></defs>
+            <g transform="translate(16 34)"><g data-scroll-gear data-gear-direction="1"><use href="#scroll-cue-profile"/></g></g>
+            <g transform="translate(33 17) rotate(15)"><g data-scroll-gear data-gear-direction="-1"><use href="#scroll-cue-profile"/></g></g>
+            <g transform="translate(33 51) rotate(15)"><g data-scroll-gear data-gear-direction="-1"><use href="#scroll-cue-profile"/></g></g>
+            <g transform="translate(24.5 25.5)" data-scroll-sparks>
+              <path class="scroll-spark" d="M0 0L-2 5" data-spark-x="-15" data-spark-y="38"/>
+              <path class="scroll-spark" d="M0 0L0 7" data-spark-x="-4" data-spark-y="51"/>
+              <path class="scroll-spark" d="M0 0L2 5" data-spark-x="12" data-spark-y="42"/>
+              <path class="scroll-spark" d="M0 0L-1 4" data-spark-x="-9" data-spark-y="31"/>
+              <path class="scroll-spark" d="M0 0L1 6" data-spark-x="5" data-spark-y="46"/>
+              <path class="scroll-spark" d="M0 0L2 4" data-spark-x="18" data-spark-y="34"/>
+            </g>
+            <g transform="translate(24.5 42.5)" data-scroll-sparks>
+              <path class="scroll-spark" d="M0 0L-2 5" data-spark-x="-14" data-spark-y="35"/>
+              <path class="scroll-spark" d="M0 0L0 7" data-spark-x="-2" data-spark-y="48"/>
+              <path class="scroll-spark" d="M0 0L2 5" data-spark-x="13" data-spark-y="40"/>
+              <path class="scroll-spark" d="M0 0L-1 4" data-spark-x="-8" data-spark-y="29"/>
+              <path class="scroll-spark" d="M0 0L1 6" data-spark-x="6" data-spark-y="44"/>
+              <path class="scroll-spark" d="M0 0L2 4" data-spark-x="19" data-spark-y="32"/>
+            </g>
+          </svg>
+        </a>
       </section>
+
+      <div class="hero-transition" aria-hidden="true"></div>
 
       <section class="section workbench" id="try-robot" aria-labelledby="workbench-title">
         <div class="shell">
