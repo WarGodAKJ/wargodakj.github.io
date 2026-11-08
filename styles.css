@@ -152,7 +152,7 @@ a {
 .primary-nav a {
   padding: 12px 14px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -164,13 +164,15 @@ a {
 .primary-nav .nav-resume {
   margin-left: 10px;
   padding-inline: 17px;
-  color: var(--ink);
-  border: 1px solid var(--line);
+  color: #102128;
+  background: #edaa80;
+  border: 1px solid #edaa80;
   border-radius: 6px;
 }
 
 .primary-nav .nav-resume:hover {
-  background: var(--paper-deep);
+  color: #102128;
+  background: #f2c2a0;
 }
 
 .menu-button {

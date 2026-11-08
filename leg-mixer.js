@@ -1,4 +1,4 @@
-import { createSpotScene, drawSpotModel } from './spot-illustration.js?v=spot-v3';
+import { createSpotScene, drawSpotModel } from './spot-illustration.js?v=spot-silhouette-20261108a';
 
 // Mirrors mixCorrections() from SpotMicro's hardware-tested v3 controller.
 export function mixLegCorrections(pitch, roll) {

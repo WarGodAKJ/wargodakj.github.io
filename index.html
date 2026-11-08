@@ -23,11 +23,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="leg-mixer.css">
+    <link rel="stylesheet" href="leg-mixer.css?v=spot-silhouette-20261108a">
     <link rel="stylesheet" href="home.css">
     <script type="module" src="portfolio.js"></script>
-    <script type="module" src="leg-mixer.js?v=spot-v3"></script>
+    <script type="module" src="leg-mixer.js?v=spot-silhouette-20261108a"></script>
     <script type="module" src="hero-gears.js"></script>
+    <script type="module" src="hero-portrait.js"></script>
   </head>
   <body class="portfolio-home">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -66,7 +67,8 @@
             <p class="hero-lede">I’m completing a B.S. in Mechanical Engineering with a Mechatronics minor at Penn State. My work includes connector design, test fixtures, robotics, and engineering analysis.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="#selected-work">View selected projects <span aria-hidden="true">↓</span></a>
-              <a class="button button-secondary" href="#try-robot">Tilt the robot <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="assets/Atharva_Joshi_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a>
+              <a class="hero-demo-link" href="#try-robot">Try the robot demo <span aria-hidden="true">↘</span></a>
             </div>
             <div class="hero-links" aria-label="Professional profiles">
               <a href="https://www.linkedin.com/in/atharvajoshi2026" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
@@ -79,23 +81,44 @@
                 <dd>B.S. Mechanical Engineering</dd>
               </div>
               <div>
-                <dt>Focus</dt>
-                <dd>Mechanical design and hardware systems</dd>
-              </div>
-              <div>
                 <dt>Graduation</dt>
                 <dd>December 2026</dd>
               </div>
             </dl>
+            <p class="hero-availability">Seeking full-time Mechanical Engineering roles · Available February 2027.</p>
           </div>
 
-          <figure class="hero-portrait">
+          <figure class="hero-portrait" data-portrait-panel>
             <span class="portrait-screw is-top-left" aria-hidden="true"></span>
             <span class="portrait-screw is-top-right" aria-hidden="true"></span>
             <span class="portrait-screw is-bottom-left" aria-hidden="true"></span>
             <span class="portrait-screw is-bottom-right" aria-hidden="true"></span>
-            <img src="assets/bkl.jpg" alt="Atharva Joshi" width="1024" height="1024" fetchpriority="high">
-            <figcaption><span>ME / Mechatronics</span><span>Penn State</span></figcaption>
+            <button class="portrait-flip" type="button" id="hero-flip-panel" data-portrait-flip aria-label="Portrait of Atharva Joshi" disabled>
+              <span class="portrait-flip-inner">
+                <span class="portrait-face portrait-front" data-portrait-front>
+                  <img src="assets/bkl.jpg" alt="Atharva Joshi" width="1024" height="1024" fetchpriority="high">
+                </span>
+                <span class="portrait-face portrait-back" data-portrait-back aria-hidden="true">
+                  <span class="portrait-collage">
+                    <span class="portrait-project is-mobile-project" data-portrait-project data-project-label="SpotMicro">
+                      <img src="assets/hero/spotmicro.webp" alt="My SpotMicro quadruped with its integrated servos and electronics" width="640" height="480" decoding="async">
+                      <span class="portrait-project-label">SpotMicro</span>
+                    </span>
+                    <span class="portrait-project" data-portrait-project data-project-label="Connector design">
+                      <img src="assets/hero/connector.webp" alt="Creo assembly render of the TE OSFP 224G test module" width="640" height="458" decoding="async">
+                      <span class="portrait-project-label"><span class="project-label-wide">Connector design</span><span class="project-label-compact">Connector</span></span>
+                    </span>
+                    <span class="portrait-project" data-portrait-project data-project-label="Thermal analysis">
+                      <img src="assets/hero/thermal.webp" alt="Temperature contour from the Hencken burner thermal analysis" width="640" height="386" decoding="async">
+                      <span class="portrait-project-label"><span class="project-label-wide">Thermal analysis</span><span class="project-label-compact">Thermal</span></span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <figcaption class="portrait-caption"><span data-panel-caption>Portrait</span><button type="button" class="portrait-play" data-portrait-play aria-controls="hero-flip-panel" aria-label="Pause automatic portrait flips" hidden>Pause</button></figcaption>
+            <span hidden id="portrait-flip-help">Flip between my portrait and work in robotics, connector design, and thermal analysis.</span>
+            <span class="portrait-sr-only" role="status" data-portrait-status></span>
           </figure>
         </div>
       </section>
