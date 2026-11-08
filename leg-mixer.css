@@ -3,6 +3,7 @@
 .tilt-visual { padding: 28px; min-width: 0; background: radial-gradient(circle, #78949c35 1px, transparent 1px) 0 0 / 24px 24px, #102730; }
 .tilt-visual-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: #a6bec6; font: 500 9px/1.5 var(--mono); }
 .tilt-robot { display: block; width: 100%; height: auto; margin-block: 18px; overflow: visible; }
+.tilt-model-note { margin: 0 0 18px; color: #91acb7; font-size: 11px; text-align: center; }
 .robot-label { font: 500 10px var(--mono); fill: #aec4cc; letter-spacing: 1px; }
 .hip-joint { fill: #173c4d; stroke: #afc6d0; stroke-width: 2; }
 .knee-joint { fill: #285775; stroke: #c4d8dd; stroke-width: 2; }
