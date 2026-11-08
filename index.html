@@ -24,11 +24,11 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="leg-mixer.css?v=spot-silhouette-20261108a">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="home.css?v=copper-20261108">
     <script type="module" src="portfolio.js"></script>
     <script type="module" src="leg-mixer.js?v=spot-silhouette-20261108a"></script>
-    <script type="module" src="hero-gears.js"></script>
-    <script type="module" src="hero-portrait.js"></script>
+    <script type="module" src="hero-gears.js?v=copper-20261108"></script>
+    <script type="module" src="hero-portrait.js?v=copper-20261108"></script>
   </head>
   <body class="portfolio-home">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -61,7 +61,7 @@
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="shell hero-grid">
           <div class="hero-copy" id="about">
-            <p class="eyebrow">Seeking full-time Mechanical Engineering roles · Available February 2027.</p>
+            <p class="eyebrow">Seeking full-time Mechanical Engineering roles · <span class="hero-availability-date">Available Feb 2027</span></p>
             <h1 id="hero-title">Atharva <span>Joshi</span></h1>
             <p class="hero-specialty">Mechanical design, product development, and mechatronics.</p>
             <p class="hero-lede">I’m completing a B.S. in Mechanical Engineering with a Mechatronics minor at Penn State. My work includes connector design, test fixtures, robotics, and engineering analysis.</p>
@@ -117,7 +117,6 @@
                 </span>
               </span>
             </button>
-            <figcaption class="portrait-caption"><span data-panel-caption>Portrait</span><button type="button" class="portrait-play" data-portrait-play aria-controls="hero-flip-panel" aria-label="Pause automatic portrait flips" hidden>Pause</button></figcaption>
             <span hidden id="portrait-flip-help">Flip between my portrait and work in robotics, connector design, and thermal analysis.</span>
             <span class="portrait-sr-only" role="status" data-portrait-status></span>
           </figure>

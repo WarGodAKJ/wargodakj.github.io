@@ -1,4 +1,4 @@
-// Draw the decorative gear pair, seat the screws, then start slow rotation.
+// Draw the large gear and two matching pinions, seat the screws, then rotate.
 const root = document.documentElement;
 const hero = document.querySelector('.portfolio-home .hero');
 if (hero) {
@@ -32,7 +32,7 @@ if (hero) {
     stage.style.setProperty('--gears-x', `${centerX-clearance-390*scale}px`);
     stage.style.setProperty('--gears-y', `${centerY-500*scale}px`);
     stage.style.setProperty('--gears-width', `${960*scale}px`);
-    stage.style.setProperty('--gears-height', `${880*scale}px`);
+    stage.style.setProperty('--gears-height', `${960*scale}px`);
   };
   const syncPlayback = () => {
     const play = !reduced.matches && !compact.matches && inView && !document.hidden;
@@ -42,7 +42,7 @@ if (hero) {
     if (!art || reduced.matches || rotations.length) return;
     rotations.push(
       art.querySelector('.gear-large').animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 300000, iterations: Infinity }),
-      art.querySelector('.gear-small').animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-360deg)' }], { duration: 120000, iterations: Infinity })
+      ...[...art.querySelectorAll('.gear-small')].map(gear => gear.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(-360deg)' }], { duration: 120000, iterations: Infinity }))
     );
     syncPlayback();
   };
@@ -62,6 +62,14 @@ if (hero) {
       const document = new DOMParser().parseFromString(await response.text(), 'image/svg+xml');
       if (document.querySelector('parsererror')) throw new Error('Invalid gear artwork');
       art = document.documentElement;
+      // Reuse the same pinion profile below the portrait at the same pitch distance.
+      // The phase follows the change in center-line angle for the 40:16 tooth pair.
+      const lowerPinion = art.querySelector('.gear-small').parentElement.cloneNode(true);
+      const phase = 3.5 * 2 * Math.atan2(272, 320) * 180 / Math.PI;
+      lowerPinion.setAttribute('transform', `translate(710 772) rotate(${phase})`);
+      lowerPinion.classList.add('gear-lower');
+      art.append(lowerPinion);
+      art.setAttribute('viewBox', '0 0 960 960');
       art.classList.add('hero-gears-art');
       art.setAttribute('aria-hidden', 'true');
       art.setAttribute('focusable', 'false');
